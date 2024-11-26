@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta</title>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <style>
+        body {
+            background: url(imagen/Rain.jpg);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            background-size: contain;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .question-container {
+            text-align: center;
+            background-color: #ffffff; /* Fondo blanco dentro del cuadro */
+            border: 5px solid #000000; /* Borde negro */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra alrededor del cuadro */
+        }
+        .image-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .question {
+            font-size: 2em;
+            font-weight: bold;
+            -webkit-text-fill-color: linear-gradient(to right, violet, indigo, blue, green, rgb(216, 66, 104), orange, red);
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #000000;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #f10a0a;
+        }
+    </style>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("M50MMopPXCSdyJ9Pw"); // Reemplaza TU_USER_ID por tu User ID de EmailJS
+        })();
+    
+        function sendAnswer(answer) {
+            const templateParams = {
+                message: `La respuesta es: ${answer}`
+            };
+    
+            emailjs.send('service_mlwzw4w', 'template_vcbj1qa', templateParams) // Reemplaza con tus valores
+                .then(function(response) {
+                    alert('Respuesta enviada con éxito!');
+                }, function(error) {
+                    alert('Error al enviar la respuesta:', error);
+                });
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="question-container">
+    <div class="question">
+        ¿Quieres ir al cine conmigo?
+    </div>
+    <button class="button" onclick="sendAnswer('Sí')">Sí</button>
+    <button class="button" onclick="sendAnswer('No')">No</button>
+</div>
+</body>
+</html>
